@@ -5,22 +5,22 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                bundle install
-                bundle exec bootsnap precompile --gemfile
-                bundle exec bootsnap precompile app/ lib/
+                sh 'bundle install'
+                sh 'bundle exec bootsnap precompile --gemfile'
+                sh 'bundle exec bootsnap precompile app/ lib/'
             }
         }
         stage('Test') {
             steps {
                 echo 'Testing..'
-                rails test
+                sh 'rails test'
             }
         }
         stage('Docker Build') {
             steps {
                 echo 'Deploying....'
-                docker ps -a
-                docker build -t sicei-$GIT_BRANCH:1.0.0-$BUILD_NUMBER .
+                sh 'docker ps -a'
+                sh 'docker build -t sicei-$GIT_BRANCH:1.0.0-$BUILD_NUMBER .'
             }
         }
     }
