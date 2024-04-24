@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+john:
+  id: 1
+  nombre: John Doe
+  matricula: A1234567
+
+jane:
+  id: 2
+  nombre: Jane Doe
+  matricula: A7654321
